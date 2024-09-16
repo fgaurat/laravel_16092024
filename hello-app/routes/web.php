@@ -12,4 +12,6 @@ Route::get('/', function () {
 //     // return view('hello'); // resource/views/hello.blade.php
 // });
 
-Route::get('/hello/{name}', [HelloController::class,'index'])->name("la route hello");
+Route::get('/hello/show', [HelloController::class,'show'])->name("hello_show");
+Route::get('/hello/show2', [HelloController::class,'show2'])->name("hello_show");
+Route::get('/hello/{name}', [HelloController::class,'index'])->name("hello_index");
