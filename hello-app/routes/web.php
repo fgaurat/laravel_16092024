@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EvenController;
 use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::get('/hello/{name}', [HelloController::class,'index'])->name("hello_index
 // })->name('is_even.form');
 
 Route::get('/is_even',fn()=>view('is_even.form'))->name('is_even.form');
+Route::post('/calc',[EvenController::class,"calc"])->name('is_even.calc');

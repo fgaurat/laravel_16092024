@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 
+@section('title','Le formulaire')
+
 @section('content')
-    <h1>Hello {{ $name }} {{ $age }}  {{$job}}</h1>
+    <form action="" method="POST">
+        <input type="text" value="" placeholder="Integer value ..." name="numberValue">
+        <button class="btn btn-primary" type="submit">Even ?</button>
+    </form>
 @endsection
