@@ -15,3 +15,9 @@ Route::get('/', function () {
 Route::get('/hello/show', [HelloController::class,'show'])->name("hello_show");
 Route::get('/hello/show2', [HelloController::class,'show2'])->name("hello_show");
 Route::get('/hello/{name}', [HelloController::class,'index'])->name("hello_index");
+
+// Route::get('/is_even',function(){
+//     return view('is_even.form');
+// })->name('is_even.form');
+
+Route::get('/is_even',fn()=>view('is_even.form'))->name('is_even.form');
