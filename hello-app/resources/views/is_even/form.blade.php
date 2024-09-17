@@ -3,7 +3,7 @@
 @section('title','Le formulaire')
 
 @section('content')
-    <form action="/calc" method="POST">
+    <form action="{{route('is_even.calc')}}" method="POST">
         @csrf
         <input type="text" value="" placeholder="Integer value ..." name="numberValue">
         <button class="btn btn-primary" type="submit">Even ?</button>
