@@ -7,7 +7,7 @@
 @section('content')
 
 
-
+    <a href="{{route('todos.create')}}" class="btn btn-primary">Create todo</a>
 
     <table class="table">
         <thead>

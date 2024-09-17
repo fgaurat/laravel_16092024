@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTodoRequest;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,15 +28,24 @@ class TodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('todos.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTodoRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Todo::create([
+            "title"=>$validated['todoTitle'],
+            "completed"=>$validated['todoCompleted'],
+        ]);
+
+
+        return redirect()->route('todos.index')->with('status','Todo created !');
+
     }
 
     /**

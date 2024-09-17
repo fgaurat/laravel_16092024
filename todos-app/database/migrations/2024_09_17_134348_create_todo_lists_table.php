@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('todos', function (Blueprint $table) {
-            $table->string('title');
-            $table->boolean('completed');
+        Schema::create('todo_lists', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string("name");
         });
     }
 
@@ -22,9 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('todos', function (Blueprint $table) {
-            $table->dropColumn('title');
-            $table->dropColumn('completed');
-        });
+        Schema::dropIfExists('todo_lists');
     }
 };
