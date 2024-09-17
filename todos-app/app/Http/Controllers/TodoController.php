@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+
 
 class TodoController extends Controller
 {
@@ -12,7 +15,11 @@ class TodoController extends Controller
      */
     public function index()
     {
+        Paginator::useBootstrap();
         //
+        // $todos = Todo::all();
+        $todos = DB::table('todos')->paginate(15);
+        return view('todos.index',['todos'=>$todos]);
     }
 
     /**
