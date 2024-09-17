@@ -8,4 +8,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/todos',[TodoController::class,'index'])->name("todos.index");
+// Route::get('/todos',[TodoController::class,'index'])->name("todos.index");
+// Route::get('/todos/{id}',[TodoController::class,'destroy'])->name("todos.destroy");
+Route::resource('todos',TodoController::class);
