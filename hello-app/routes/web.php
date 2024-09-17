@@ -23,3 +23,5 @@ Route::get('/hello/{name}', [HelloController::class,'index'])->name("hello_index
 
 Route::get('/is_even',fn()=>view('is_even.form'))->name('is_even.form');
 Route::post('/calc',[EvenController::class,"calc"])->name('is_even.calc');
+Route::get('/odd',fn()=>view('is_even.odd'))->name('is_even.odd');
+Route::get('/even',fn()=>view('is_even.even'))->name('is_even.even');
