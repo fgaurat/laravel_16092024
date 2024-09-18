@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\TodoListResource;
 use App\Models\TodoList;
 use Illuminate\Http\Request;
+use Log;
 
 class TodoListAPIController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +23,14 @@ class TodoListAPIController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData =$request->validate([
+            "name"=>"required"
+        ]);
+        Log::info($validatedData);
+        $todoList = TodoList::create($validatedData);
+
+        return new TodoListResource($todoList);
+
     }
 
     /**

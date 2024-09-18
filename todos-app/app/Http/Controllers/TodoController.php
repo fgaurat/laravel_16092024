@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewTodo;
 use App\Http\Requests\StoreTodoRequest;
+use App\Jobs\SendMailJob;
 use App\Models\Todo;
 use App\Models\TodoList;
 use Illuminate\Http\Request;
@@ -40,12 +42,15 @@ class TodoController extends Controller
     {
         $validated = $request->validated();
 
-        Todo::create([
+        $todo = Todo::create([
             "title"=>$validated['todoTitle'],
             "completed"=>$validated['todoCompleted'],
             "todo_list_id"=>$request->todo_list_id
         ]);
 
+        //event
+        NewTodo::dispatch($todo);
+        SendMailJob::dispatch();
 
         return redirect()->route('todos.index')->with('status','Todo created !');
 

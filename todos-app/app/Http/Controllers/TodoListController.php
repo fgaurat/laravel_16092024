@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Interfaces\TodoListRepositoryInterface;
 use App\Models\TodoList;
+use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -14,7 +15,13 @@ class TodoListController extends Controller
      */
     public function index(TodoListRepositoryInterface $repo)
     {
+        // if (! Gate::allows('show-todolist')) {
+        //     abort(403);
+        // }
         // $all = TodoList::withCount('todos')->get();
+
+        // Gate::authorize('viewAny',TodoList::class);
+
         $all = $repo->findAll();
 
         return view("todolist.index",["todolists"=>$all]);

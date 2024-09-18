@@ -1,0 +1,20 @@
+get http://localhost:8000/api/user
+
+
+###
+
+get http://localhost:8000/api/todolist
+
+
+###
+
+get http://localhost:8000/api/todolist/2
+
+
+###
+post http://localhost:8000/api/todolist
+content-type: application/json
+
+{
+    "name": "Une todo list via restapi"
+}

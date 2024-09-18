@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::apiResource("todolist",TodoListAPIController::class);
+Route::apiResource("todolist",TodoListAPIController::class)->middleware('auth:sanctum');

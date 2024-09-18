@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -30,6 +30,7 @@ class TodoList extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
+    protected $fillable = ['name'];
 
     public function todos(){
         return $this->hasMany(Todo::class);
