@@ -21,7 +21,7 @@
             <tr>
                 <td>{{$todolist->id}}</td>
                 <td>{{$todolist->name}}</td>
-                <td>{{$todolist->todos->count()}}</td>
+                <td>{{$todolist->todos_count}}</td>
                 <td>{{$todolist->completedTodos->count()}}</td>
                 <td>
                     <a href="{{route('todolist.show',$todolist->id)}}">Show</a>

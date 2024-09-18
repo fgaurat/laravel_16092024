@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTodoRequest;
 use App\Models\Todo;
+use App\Models\TodoList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -28,7 +29,8 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('todos.create');
+        $all = TodoList::all();
+        return view('todos.create',["todoList"=>$all]);
     }
 
     /**
@@ -41,6 +43,7 @@ class TodoController extends Controller
         Todo::create([
             "title"=>$validated['todoTitle'],
             "completed"=>$validated['todoCompleted'],
+            "todo_list_id"=>$request->todo_list_id
         ]);
 
 

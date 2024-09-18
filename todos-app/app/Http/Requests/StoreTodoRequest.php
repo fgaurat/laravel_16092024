@@ -14,6 +14,13 @@ class StoreTodoRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void{
+        $this->merge([
+            'todoCompleted' => $this->boolean('todoCompleted'),
+        ]);
+    }
+
+
     /**
      * Get the validation rules that apply to the request.
      *

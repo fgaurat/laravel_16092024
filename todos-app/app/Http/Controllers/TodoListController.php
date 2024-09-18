@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\TodoListRepositoryInterface;
 use App\Models\TodoList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -11,9 +12,10 @@ class TodoListController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TodoListRepositoryInterface $repo)
     {
-        $all = TodoList::all();
+        // $all = TodoList::withCount('todos')->get();
+        $all = $repo->findAll();
 
         return view("todolist.index",["todolists"=>$all]);
     }
@@ -37,10 +39,9 @@ class TodoListController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TodoList $todoList)
+    public function show(TodoList $todolist)
     {
-        Log::info($todoList->toJson());
-        return view('todolist.show',['todoList'=>$todoList]);
+        return view('todolist.show',['todolist'=>$todolist]);
     }
 
     /**
